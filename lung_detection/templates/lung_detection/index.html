@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Классификация снимков легких</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input[type="file"] {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .result-section h2 {
+            color: #333;
+        }
+        .result-image, .result-analysis {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .result-image img, .highlighted-areas img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .highlighted-areas {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Классификация снимков легких</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Распознать</button>
+        </form>
+
+        {% if result %}
+            <div class="result-section">
+                <h2>Результат анализа</h2>
+                <p>{{ result }}</p>
+
+                <div class="result-image">
+                    <h3>Загруженное изображение:</h3>
+                    <img src="{{ uploaded_image_url }}" alt="Загруженное изображение">
+                </div>
+
+                <div class="result-analysis">
+                    <h3>Анализ изображения нейросетью:</h3>
+                    <p>{{ analysis_description }}</p>
+                </div>
+
+                <div class="highlighted-areas">
+                    <h3>Участки, на основе которых принято решение:</h3>
+                    {% for area_image_url in highlighted_areas %}
+                        <img src="{{ area_image_url }}" alt="Выделенный участок">
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

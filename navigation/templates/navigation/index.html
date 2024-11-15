@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реализация веб-интерфейсов для нейронных сетей дипломного проекта по обнаружению рака с использованием технологий компьютерного зрения</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar, .notice-bar {
+            width: 100%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .navbar {
+            background-color: #4CAF50;
+            justify-content: flex-end;
+            padding-right: 20px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin-left: 20px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .notice-bar {
+            background-color: #f44336;
+            text-align: center;
+            font-size: 16px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .app-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .app-list li {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .app-list li a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-size: 18px;
+        }
+        .app-list li:hover {
+            background-color: #e8f5e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="notice-bar">
+        Сайт находится в состоянии разработки. Некоторые функции отключены для безопасности.
+    </div>
+    <div class="navbar">
+        <a href="/profile/">
+            <img src="https://via.placeholder.com/24" alt="Профиль" width="24" height="24">
+            Личный кабинет
+        </a>
+        <a href="/settings/">
+            <img src="https://via.placeholder.com/24" alt="Настройки" width="24" height="24">
+            Настройки
+        </a>
+    </div>
+    <div class="container">
+        <h1>Реализация веб-интерфейсов для нейронных сетей дипломного проекта по обнаружению рака с использованием технологий компьютерного зрения</h1>
+        <ul class="app-list">
+            <li><a href="/detection/">Обнаружение рака легких на снимках биопсии</a></li>
+            <li><a href="/lung-detection/">Обнаружение рака легких на снимках КТ</a></li>
+            <li><a href="/sputum-detection/">Обнаружение рака легких на снимках мокроты</a></li>
+        </ul>
+    </div>
+</body>
+</html>
